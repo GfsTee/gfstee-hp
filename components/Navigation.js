@@ -12,8 +12,8 @@ const Navigation = () => {
             <div className={`${isShown ? "show" : "hide"} hamburger`}>
                 <ul>
                     <li><Link href=""><a>Home</a></Link></li>
-                    <li><Link href=""><a>About</a></Link></li>
-                    <li><Link href=""><a>Contact</a></Link></li>
+                    <li><Link href=""><a className="from-left">About</a></Link></li>
+                    <li><Link href=""><a className="from-right">Contact</a></Link></li>
 
                 </ul>
             </div>
@@ -49,10 +49,9 @@ const Navigation = () => {
                 opacity: 1;
             }
             .menu.show span:nth-of-type(1) {
-                transform: rotate(45deg) ;
+                transform: rotate(45deg);
                 transform-origin: left top;
-                margin-left: 10px;
-                
+                margin-left: 12px;
             }
             .menu.show span:nth-of-type(2) {
                 opacity: 0;
@@ -60,8 +59,33 @@ const Navigation = () => {
             .menu.show span:nth-of-type(3) {
                 transform: rotate(-45deg);
                 transform-origin: left bottom;
-                margin-left: 10px;
+                margin-left: 12px;
             }
+            .menu.show:hover span {
+                animation: pulsation-span 1s ease-in-out infinite;
+            }
+            @keyframes pulsation-span {
+                0%,100% {box-shadow: 0px 0px 0px #fff, 0px 0px 0px #fff}
+                50% {box-shadow: 5px 0px 0px #fff, -5px 0px 0px #fff}
+            }
+            
+            @keyframes move-span-up {
+                0%, 100% {transform: translateY(0)}
+                50% {transform: translateY(-4px)}
+            }
+            @keyframes move-span-down {
+                0%, 100% {transform: translateY(0)}
+                50% {transform: translateY(4px)}
+            }
+            .menu.hide:hover span:nth-of-type(1) {
+                animation: move-span-up 1s linear infinite;
+            }
+            .menu.hide:hover span:nth-of-type(3) {
+                animation: move-span-down 1s linear infinite;
+            }
+            
+
+            
             .hamburger {
                 position: absolute;
                 background: #000;
@@ -90,6 +114,28 @@ const Navigation = () => {
             a {
                 color: #fff;
                 font-size: 3em;
+            }
+            a {
+                display: block;
+                padding-bottom: 2px;
+            }
+            a:after {
+                display:block;
+                content: '';
+                border-bottom: solid 3px #019fb6;  
+                transform: scaleX(0);  
+                transition: transform 500ms ease-in-out;
+            }
+            a:hover:after {
+                transform: scaleX(1);
+            }
+            .from-left:hover:after {
+                transform-origin: left;
+                transform: scaleX(1);
+            }
+            .from-right:hover:after {
+                transform-origin: right;
+                transform: scaleX(1);
             }
             `}</style>
         </nav >
