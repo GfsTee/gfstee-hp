@@ -19,6 +19,9 @@ const Layout = () => {
             body {
                 overflow-x: hidden;
             }
+            html {
+                scroll-behavior: smooth;
+              }
             `}</style>
         </>
     );

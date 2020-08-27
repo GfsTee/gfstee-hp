@@ -83,11 +83,8 @@ const Navigation = () => {
             .menu.hide:hover span:nth-of-type(3) {
                 animation: move-span-down 1s linear infinite;
             }
-            
-
-            
             .hamburger {
-                position: absolute;
+                position: fixed;
                 background: #000;
                 width: 40%;
                 height: 80vh;
